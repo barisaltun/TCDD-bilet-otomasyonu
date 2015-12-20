@@ -1,0 +1,10 @@
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\bin\Debug\Donem Projesi.exe.config
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\bin\Debug\Donem Projesi.exe
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\bin\Debug\Donem Projesi.pdb
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\TCDD.csprojResolveAssemblyReference.cache
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\TCDD.frm_seferbilgi.resources
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\TCDD.frm_kisibilgisi.resources
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\TCDD.Properties.Resources.resources
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\TCDD.csproj.GenerateResource.Cache
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\Donem Projesi.exe
+C:\Users\Barış ALTUN\documents\visual studio 2013\Projects\Donem Projesi\Donem Projesi\obj\Debug\Donem Projesi.pdb
