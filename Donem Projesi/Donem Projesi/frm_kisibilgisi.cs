@@ -21,7 +21,7 @@ namespace TCDD
 
         private void FormTasarimOlustur()
         {
-            string sAd = "txt_ad", sSoyad = "txt_soyad", sTc = "txt_tc", sTip = "cmb_tip";
+            string sAd = "txt_ad", sSoyad = "txt_soyad", sTc = "txt_tc", sTip = "cmb_tip", sOdeme = "chk_odeme";
             int xlad = 149, xlsoyad = 256, xltc = 351, xltip = 484;
             int ylad, ylsoyad, yltc, yltip;
             ylad = ylsoyad = yltc = yltip = 56;
@@ -46,26 +46,24 @@ namespace TCDD
             lbltip.Location = new Point(xltip, yltip);
             lbltip.Text = "Tip";
             lbltip.AutoSize = true;
-            Label lbltutar = new Label();
-            lbltutar.Name = "lbl_tutar";
-            lbltutar.Location = new Point(397, 227);
-            lbltutar.Text = "Tutar";
-            lbltutar.AutoSize = true;
-            TextBox txttutar = new TextBox();
-            txttutar.Name = "txt_tutar";
-            txttutar.Location = new Point(468, 227);
-            txttutar.ReadOnly = true;
+            Label lblodeme = new Label();
+            lblodeme.Name = "lbl_odeme";
+            lblodeme.Location = new Point(xltip + 80, yltip);
+            lblodeme.AutoSize = true;
+            lblodeme.Text = " Odeme Yapacak \n          Yolcu";
+            lblodeme.AutoSize = true;
 
+           
 
+            this.Controls.Add(lblodeme);
             this.Controls.Add(lblad);
             this.Controls.Add(lblsoyad);
             this.Controls.Add(lbltc);
             this.Controls.Add(lbltip);
-            this.Controls.Add(lbltutar);
-            this.Controls.Add(txttutar);
+           
 
-            int xad = 125, xsoyad = 231, xtc = 340, xtip = 447, xlsayi = 50;
-            int yad = 75, ysoyad = 75, ytc = 75, ytip = 75, ylsayi = 80;
+            int xad = 125, xsoyad = 231, xtc = 340, xtip = 447, xlsayi = 50, xodeme = 580;
+            int yad = 75, ysoyad = 75, ytc = 75, ytip = 75, ylsayi = 80, yodeme = 75;
             for (int i = 0; i < yolcusayisi + 1; i++)
             {
                 Label lblsayi = new Label();
@@ -88,6 +86,10 @@ namespace TCDD
                 cmbtip.Location = new Point(xtip, ytip + (i * 30));
                 cmbtip.Items.Add("Ogrenci");
                 cmbtip.Items.Add("Tam");
+                CheckBox chkodeme = new CheckBox();
+                chkodeme.Name = sOdeme + (i + 1);
+                chkodeme.Location = new Point(xodeme, yodeme + (i * 30));
+                this.Controls.Add(chkodeme);
                 this.Controls.Add(lblsayi);
                 this.Controls.Add(txtad);
                 this.Controls.Add(txtsoyad);
@@ -99,6 +101,73 @@ namespace TCDD
         private void Form2_Load(object sender, EventArgs e)
         {
             FormTasarimOlustur();
+
+        }
+
+        private void btn_kaydet_Click(object sender, EventArgs e)
+        {
+            List<Yolcu> yolcular = new List<Yolcu>();
+            Yolcu y;
+
+            short odemeyapacakyolcuindisi = 0;
+            string ad = "", soyad = "";
+            long tc = 0;
+            
+            #region yolcutanimi
+            for (int i = 0; i < yolcusayisi + 1; i++)
+            {
+                foreach (Control c in Controls)
+                {
+                    
+                    if (c.Name == "txt_ad" + (i + 1))
+                    {
+                        ad = c.Text;
+                    }
+                    if (c.Name == "txt_soyad" + (i + 1))
+                    {
+                        soyad = c.Text;
+                    }
+                    if (c.Name == "txt_tc" + (i + 1))
+                    {
+                        tc = Convert.ToInt64(c.Text);
+                    }
+                    if (c.Name =="chk_odeme"+(i+1))
+                    {
+                        CheckBox cb = (CheckBox)c;
+                        if (cb.Checked)
+                        {
+                            odemeyapacakyolcuindisi = (short)i;
+                        }
+                    }
+                }
+                foreach (Control cb in Controls)
+                {
+                    
+                        if (cb.Name == "cmb_tip" + (i + 1))
+                        {
+                            if (cb.Text == "Ogrenci")
+                            {
+                                y = new OgrenciYolcu(ad, soyad, tc);
+                                yolcular.Add(y);
+                            }
+                            else if (cb.Text == "Tam")
+                            {
+                                y = new TamYolcu(ad, soyad, tc);
+                                yolcular.Add(y);
+                            }
+
+                        }
+
+
+
+                }
+
+                frm_seferbilgi.yolculistesi = yolcular;
+                frm_seferbilgi.odemeyapacakyolcu = yolcular[odemeyapacakyolcuindisi];
+            }
+            #endregion
+
+            this.Close();
         }
     }
 }

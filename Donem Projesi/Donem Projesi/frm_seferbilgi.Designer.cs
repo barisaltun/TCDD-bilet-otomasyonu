@@ -36,7 +36,7 @@
             this.lbl_kalkis = new System.Windows.Forms.Label();
             this.lbl_varis = new System.Windows.Forms.Label();
             this.lbl_tarih = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_gidis = new System.Windows.Forms.DateTimePicker();
             this.lbl_yolcusayisi = new System.Windows.Forms.Label();
             this.cmb_yolcusayisi = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -45,6 +45,10 @@
             this.rdo_nakit = new System.Windows.Forms.RadioButton();
             this.rdo_puan = new System.Windows.Forms.RadioButton();
             this.btn_odemeyap = new System.Windows.Forms.Button();
+            this.lbl_donus = new System.Windows.Forms.Label();
+            this.dateTimePicker_donus = new System.Windows.Forms.DateTimePicker();
+            this.lblTutar = new System.Windows.Forms.Label();
+            this.btnRezervasyonOlustur = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,13 +59,14 @@
             this.rdo_tekyon.Name = "rdo_tekyon";
             this.rdo_tekyon.Size = new System.Drawing.Size(66, 17);
             this.rdo_tekyon.TabIndex = 2;
-            this.rdo_tekyon.TabStop = true;
             this.rdo_tekyon.Text = "Tek Yön";
             this.rdo_tekyon.UseVisualStyleBackColor = true;
+            this.rdo_tekyon.CheckedChanged += new System.EventHandler(this.rdo_tekyon_CheckedChanged);
             // 
             // rdo_gidisdonus
             // 
             this.rdo_gidisdonus.AutoSize = true;
+            this.rdo_gidisdonus.Checked = true;
             this.rdo_gidisdonus.Location = new System.Drawing.Point(118, 19);
             this.rdo_gidisdonus.Name = "rdo_gidisdonus";
             this.rdo_gidisdonus.Size = new System.Drawing.Size(82, 17);
@@ -72,9 +77,9 @@
             // 
             // btn_yolcubilgiekle
             // 
-            this.btn_yolcubilgiekle.Location = new System.Drawing.Point(139, 223);
+            this.btn_yolcubilgiekle.Location = new System.Drawing.Point(186, 182);
             this.btn_yolcubilgiekle.Name = "btn_yolcubilgiekle";
-            this.btn_yolcubilgiekle.Size = new System.Drawing.Size(159, 23);
+            this.btn_yolcubilgiekle.Size = new System.Drawing.Size(112, 23);
             this.btn_yolcubilgiekle.TabIndex = 4;
             this.btn_yolcubilgiekle.Text = "Yolcu Bilgilerini Ekle";
             this.btn_yolcubilgiekle.UseVisualStyleBackColor = true;
@@ -124,13 +129,13 @@
             this.lbl_tarih.TabIndex = 8;
             this.lbl_tarih.Text = "Tarih";
             // 
-            // dateTimePicker1
+            // dateTimePicker_gidis
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(122, 73);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(176, 20);
-            this.dateTimePicker1.TabIndex = 11;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker_gidis.Location = new System.Drawing.Point(122, 73);
+            this.dateTimePicker_gidis.Name = "dateTimePicker_gidis";
+            this.dateTimePicker_gidis.Size = new System.Drawing.Size(176, 20);
+            this.dateTimePicker_gidis.TabIndex = 11;
+            this.dateTimePicker_gidis.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lbl_yolcusayisi
             // 
@@ -152,7 +157,7 @@
             "5"});
             this.cmb_yolcusayisi.Location = new System.Drawing.Point(122, 182);
             this.cmb_yolcusayisi.Name = "cmb_yolcusayisi";
-            this.cmb_yolcusayisi.Size = new System.Drawing.Size(121, 21);
+            this.cmb_yolcusayisi.Size = new System.Drawing.Size(58, 21);
             this.cmb_yolcusayisi.TabIndex = 24;
             // 
             // groupBox1
@@ -168,7 +173,7 @@
             // lbl_odemetipi
             // 
             this.lbl_odemetipi.AutoSize = true;
-            this.lbl_odemetipi.Location = new System.Drawing.Point(52, 255);
+            this.lbl_odemetipi.Location = new System.Drawing.Point(52, 331);
             this.lbl_odemetipi.Name = "lbl_odemetipi";
             this.lbl_odemetipi.Size = new System.Drawing.Size(61, 13);
             this.lbl_odemetipi.TabIndex = 29;
@@ -177,7 +182,7 @@
             // rdo_kredikarti
             // 
             this.rdo_kredikarti.AutoSize = true;
-            this.rdo_kredikarti.Location = new System.Drawing.Point(122, 279);
+            this.rdo_kredikarti.Location = new System.Drawing.Point(122, 355);
             this.rdo_kredikarti.Name = "rdo_kredikarti";
             this.rdo_kredikarti.Size = new System.Drawing.Size(73, 17);
             this.rdo_kredikarti.TabIndex = 28;
@@ -188,7 +193,7 @@
             // rdo_nakit
             // 
             this.rdo_nakit.AutoSize = true;
-            this.rdo_nakit.Location = new System.Drawing.Point(55, 278);
+            this.rdo_nakit.Location = new System.Drawing.Point(55, 354);
             this.rdo_nakit.Name = "rdo_nakit";
             this.rdo_nakit.Size = new System.Drawing.Size(50, 17);
             this.rdo_nakit.TabIndex = 27;
@@ -199,7 +204,7 @@
             // rdo_puan
             // 
             this.rdo_puan.AutoSize = true;
-            this.rdo_puan.Location = new System.Drawing.Point(223, 278);
+            this.rdo_puan.Location = new System.Drawing.Point(223, 354);
             this.rdo_puan.Name = "rdo_puan";
             this.rdo_puan.Size = new System.Drawing.Size(50, 17);
             this.rdo_puan.TabIndex = 28;
@@ -209,7 +214,7 @@
             // 
             // btn_odemeyap
             // 
-            this.btn_odemeyap.Location = new System.Drawing.Point(223, 307);
+            this.btn_odemeyap.Location = new System.Drawing.Point(223, 383);
             this.btn_odemeyap.Name = "btn_odemeyap";
             this.btn_odemeyap.Size = new System.Drawing.Size(75, 23);
             this.btn_odemeyap.TabIndex = 30;
@@ -217,11 +222,49 @@
             this.btn_odemeyap.UseVisualStyleBackColor = true;
             this.btn_odemeyap.Click += new System.EventHandler(this.btn_odemeyap_Click);
             // 
+            // lbl_donus
+            // 
+            this.lbl_donus.AutoSize = true;
+            this.lbl_donus.Location = new System.Drawing.Point(48, 106);
+            this.lbl_donus.Name = "lbl_donus";
+            this.lbl_donus.Size = new System.Drawing.Size(67, 13);
+            this.lbl_donus.TabIndex = 8;
+            this.lbl_donus.Text = "Dönüş Tarihi";
+            // 
+            // dateTimePicker_donus
+            // 
+            this.dateTimePicker_donus.Location = new System.Drawing.Point(122, 99);
+            this.dateTimePicker_donus.Name = "dateTimePicker_donus";
+            this.dateTimePicker_donus.Size = new System.Drawing.Size(176, 20);
+            this.dateTimePicker_donus.TabIndex = 11;
+            this.dateTimePicker_donus.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // lblTutar
+            // 
+            this.lblTutar.AutoSize = true;
+            this.lblTutar.Location = new System.Drawing.Point(52, 298);
+            this.lblTutar.Name = "lblTutar";
+            this.lblTutar.Size = new System.Drawing.Size(102, 13);
+            this.lblTutar.TabIndex = 31;
+            this.lblTutar.Text = "Rezervasyon Tutarı:";
+            // 
+            // btnRezervasyonOlustur
+            // 
+            this.btnRezervasyonOlustur.Location = new System.Drawing.Point(122, 241);
+            this.btnRezervasyonOlustur.Name = "btnRezervasyonOlustur";
+            this.btnRezervasyonOlustur.Size = new System.Drawing.Size(159, 23);
+            this.btnRezervasyonOlustur.TabIndex = 32;
+            this.btnRezervasyonOlustur.Text = "Rezervasyonu Oluştur";
+            this.btnRezervasyonOlustur.UseVisualStyleBackColor = true;
+            this.btnRezervasyonOlustur.Click += new System.EventHandler(this.btnRezervasyonOlustur_Click);
+            // 
             // frm_seferbilgi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 349);
+            this.ClientSize = new System.Drawing.Size(321, 426);
+            this.Controls.Add(this.btnRezervasyonOlustur);
+            this.Controls.Add(this.lblTutar);
             this.Controls.Add(this.btn_odemeyap);
             this.Controls.Add(this.lbl_odemetipi);
             this.Controls.Add(this.rdo_puan);
@@ -230,7 +273,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbl_yolcusayisi);
             this.Controls.Add(this.cmb_yolcusayisi);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker_donus);
+            this.Controls.Add(this.lbl_donus);
+            this.Controls.Add(this.dateTimePicker_gidis);
             this.Controls.Add(this.lbl_tarih);
             this.Controls.Add(this.lbl_varis);
             this.Controls.Add(this.lbl_kalkis);
@@ -257,7 +302,7 @@
         private System.Windows.Forms.Label lbl_kalkis;
         private System.Windows.Forms.Label lbl_varis;
         private System.Windows.Forms.Label lbl_tarih;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_gidis;
         private System.Windows.Forms.Label lbl_yolcusayisi;
         private System.Windows.Forms.ComboBox cmb_yolcusayisi;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -266,6 +311,10 @@
         private System.Windows.Forms.RadioButton rdo_nakit;
         private System.Windows.Forms.RadioButton rdo_puan;
         private System.Windows.Forms.Button btn_odemeyap;
+        private System.Windows.Forms.Label lbl_donus;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_donus;
+        private System.Windows.Forms.Label lblTutar;
+        private System.Windows.Forms.Button btnRezervasyonOlustur;
 
     }
 }

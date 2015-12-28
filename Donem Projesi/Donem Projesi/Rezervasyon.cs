@@ -18,6 +18,7 @@ namespace TCDD
         {
             this.GidisSeferi = sefer;
             this.Yolcular = yolcular;
+            this.bRezervasyonlar = new List<BireyselRezervasyon>();
             BireyselRezervasyonlarOlustur(GidisSeferi,Yolcular);
             ToplamTutar = ToplamTutarHesapla();                        
         }
@@ -41,5 +42,17 @@ namespace TCDD
             }
         }
 
+
+        //public string BiletleriListele()
+        //{
+        //    string mesaj = "";
+
+        //    foreach (Yolcu y in Yolcular)
+        //    {
+
+        //    }
+
+
+        //}
     }
 }
